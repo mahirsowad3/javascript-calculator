@@ -11,6 +11,7 @@ body{
 .calculator-grid{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(7, 1fr);
     justify-content: center;
     align-content: stretch;
     align-items: stretch;
@@ -36,4 +37,10 @@ button:hover{
     font-size: 1.6rem;
     background-color:azure;
     font-weight: 700;
+}
+
+button:active{
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255);
+    font-weight: 900;
 }
