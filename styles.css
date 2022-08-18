@@ -14,7 +14,8 @@ body{
     justify-content: center;
     align-content: stretch;
     align-items: stretch;
-    min-height: 100vh;
+    min-height: 95vh;
+    border: 0.1rem solid black;
 }
 
 .previous-operation, .current-operation{
@@ -24,4 +25,15 @@ body{
 
 .clear-btn, .equal-btn{
     grid-column: span 2;
+}
+
+button{
+    background-color: cadetblue;
+    font-weight: 500;
+}
+
+button:hover{
+    font-size: 1.6rem;
+    background-color:azure;
+    font-weight: 700;
 }
