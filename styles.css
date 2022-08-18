@@ -13,8 +13,7 @@ body{
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(7, 1fr);
     justify-content: center;
-    align-content: stretch;
-    align-items: stretch;
+    align-content: center;
     min-height: 95vh;
     border: 0.1rem solid black;
 }
@@ -22,6 +21,21 @@ body{
 .previous-operation, .current-operation{
     grid-column: span 4;
     justify-self: end;
+    background-color: rgba(0, 0, 0, 0.25);
+    align-self: stretch;
+    justify-self: stretch;
+    text-align: end;
+    padding: 1rem;
+    border: 1px dotted black;
+}
+
+.previous-operation{
+    color:rgb(95, 91, 91);
+    font-size: 1.0rem;
+}
+
+.current-operation {
+    font-size: 1.6rem;
 }
 
 .clear-btn, .equal-btn{
@@ -41,6 +55,6 @@ button:hover{
 
 button:active{
     font-size: 1.1rem;
-    background-color: rgba(255, 255, 255);
+    background-color: rgba(255, 255, 255, 1.0);
     font-weight: 900;
 }
