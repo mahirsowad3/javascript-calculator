@@ -11,22 +11,28 @@ body{
 .calculator-grid{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-rows: minmax(1fr, auto) minmax(1fr, auto) repeat(5, 1fr);
     justify-content: center;
-    align-content: center;
+    align-content: stretch;
+    align-items: stretch;
     min-height: 95vh;
     border: 0.1rem solid black;
 }
 
+.results-panel{
+    grid-column: span 4;
+    background-color: rgba(150, 192, 149, 0.785);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 0.5rem;
+    overflow: auto;
+}
+
 .previous-operation, .current-operation{
     grid-column: span 4;
-    justify-self: end;
-    background-color: rgba(0, 0, 0, 0.25);
-    align-self: stretch;
-    justify-self: stretch;
-    text-align: end;
-    padding: 1rem;
-    border: 1px dotted black;
+    border: 1px solid black;
 }
 
 .previous-operation{
@@ -45,9 +51,11 @@ body{
 button{
     background-color: cadetblue;
     font-weight: 500;
+    border: 2px solid aquamarine;
 }
 
 button:hover{
+    cursor: pointer;
     font-size: 1.6rem;
     background-color:azure;
     font-weight: 700;
