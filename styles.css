@@ -32,7 +32,8 @@ body{
 
 .previous-operation, .current-operation{
     grid-column: span 4;
-    border: 1px solid black;
+    overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 .previous-operation{
