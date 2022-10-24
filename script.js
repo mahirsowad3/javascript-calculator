@@ -118,9 +118,35 @@ document.addEventListener("DOMContentLoaded", (e) => {
       secondNumberInput === INPUT_EMPTY
     ) {
       //if user presses multiple operations sequentially
+      //replace the current operator with the new operator
       operatorInput = buttonOperatorText;
       //update the display
       currentOperationPanel[0].innerText = firstNumberInput
+        .concat(" ")
+        .concat(operatorInput);
+    } else if (
+      firstNumberInput !== INPUT_EMPTY &&
+      operatorInput !== INPUT_EMPTY &&
+      secondNumberInput !== INPUT_EMPTY
+    ) {
+      //if the user wants to chain operations together
+      //find the result of the current operation
+      let currentResult = performOperation(
+        Number(firstNumberInput),
+        Number(secondNumberInput),
+        operatorInput
+      );
+      //update previous operation panel
+      previousOperationPanel[0].innerText = currentOperationPanel[0].innerText;
+      //set the firstNumberInput to the result of current operation
+      firstNumberInput = currentResult.toString();
+      //set the operatorInput to the new operator
+      operatorInput = buttonOperatorText;
+      //reset the secondNumberInput
+      secondNumberInput = INPUT_EMPTY;
+      //update the current operation panel
+      currentOperationPanel[0].innerText = currentResult
+        .toString()
         .concat(" ")
         .concat(operatorInput);
     }
