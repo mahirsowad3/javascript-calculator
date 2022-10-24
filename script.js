@@ -90,6 +90,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
     //get the operator of the button being clicked
     let buttonOperatorText = button.innerText;
 
+    //check if the firstNumberInput has been entered
+    if (firstNumberInput === INPUT_EMPTY) {
+      //if firstNumberInput is empty
+      //then set firstNumberInput to 0
+      firstNumberInput = "0";
+    }
+
+    //operator logic begins here:
+    //
     //check if this is the first operation
     if (
       firstNumberInput !== INPUT_EMPTY &&
