@@ -43,6 +43,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
   }
 
+  //set up event listener on the equal button
+  for (let i = 0; i < equalButton.length; i++) {
+    equalButton[i].addEventListener("click", () => {
+      equalButtonClickHandler(equalButton[i]);
+    });
+  }
+
   /*
    function to handle clicks for numberButtons
    parameters: button
@@ -149,6 +156,20 @@ document.addEventListener("DOMContentLoaded", (e) => {
         .toString()
         .concat(" ")
         .concat(operatorInput);
+    }
+  };
+
+  let equalButtonClickHandler = (button) => {
+    //if user has entered no number
+    if (firstNumberInput === INPUT_EMPTY && secondNumberInput === INPUT_EMPTY) {
+      //set the firstNumberInput to 0
+      firstNumberInput = "0";
+      //update the previous operation panel
+      previousOperationPanel[0].innerText = firstNumberInput
+        .concat(" ")
+        .concat("=");
+      //update the current operation panel
+      currentOperationPanel[0].innerText = firstNumberInput;
     }
   };
 
