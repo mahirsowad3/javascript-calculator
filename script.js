@@ -1,5 +1,5 @@
 //constants to keep track of what current button press means
-const INPUT_EMPTY = -1;
+const INPUT_EMPTY = "";
 
 let firstNumberInput = INPUT_EMPTY;
 let operatorInput = INPUT_EMPTY;
@@ -38,24 +38,32 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   /*
    function to handle clicks for numberButtons
+   parameters: button
+   button-the button being clicked
   */
   let numberButtonClickHandler = (button) => {
     //get the number associated with that button
-    let buttonNumber = button.innerText;
+    let buttonNumberText = button.innerText;
 
     //check if firstNumberInput is empty
     if (firstNumberInput === INPUT_EMPTY) {
       //if empty, then set firstNumberInput to buttonNumber
-      firstNumberInput = buttonNumber;
+      firstNumberInput = buttonNumberText;
+      //update current operation panel
       currentOperationPanel[0].innerText = firstNumberInput;
-    } else if (firstNumberInput !== INPUT_EMPTY) {
+    } else {
       //if firstNumberInput is not empty
       //then check if operatorInput is empty
       if (operatorInput === INPUT_EMPTY) {
         //if operatorInput is empty
         //then append number to the end of firstNumberInput
-        firstNumberInput = firstNumberInput.concat(buttonNumber);
+        firstNumberInput = firstNumberInput.concat(buttonNumberText);
+        //update current operation display
         currentOperationPanel[0].innerText = firstNumberInput;
+      } else {
+        //if operator has already been choosen
+        //then append to second number
+        secondNumberInput.concat(buttonNumberText);
       }
     }
   };
