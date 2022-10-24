@@ -28,11 +28,18 @@ document.addEventListener("DOMContentLoaded", (e) => {
   let currentOperationPanel =
     document.getElementsByClassName("current-operation");
 
-  //set up event sisteners on number buttons
+  //set up event listeners on number buttons
   for (let i = 0; i < numberButtons.length; i++) {
     //set up event listeners on each number button
     numberButtons[i].addEventListener("click", () => {
       numberButtonClickHandler(numberButtons[i]);
+    });
+  }
+
+  //set up event listeners on operator buttons
+  for (let i = 0; i < operatorButtons.length; i++) {
+    operatorButtons[i].addEventListener("click", () => {
+      operatorButtonClickHandler(operatorButtons[i]);
     });
   }
 
@@ -58,13 +65,69 @@ document.addEventListener("DOMContentLoaded", (e) => {
         //if operatorInput is empty
         //then append number to the end of firstNumberInput
         firstNumberInput = firstNumberInput.concat(buttonNumberText);
-        //update current operation display
+        //update current operation panel
         currentOperationPanel[0].innerText = firstNumberInput;
       } else {
         //if operator has already been choosen
         //then append to second number
-        secondNumberInput.concat(buttonNumberText);
+        secondNumberInput = secondNumberInput.concat(buttonNumberText);
+        //update current operation panel
+        currentOperationPanel[0].innerText = firstNumberInput
+          .concat(" ")
+          .concat(operatorInput)
+          .concat(" ")
+          .concat(secondNumberInput);
       }
+    }
+  };
+
+  /*
+  function to handle clicks for operator buttons
+  parameters: button
+  button-the button being clicked
+  */
+  let operatorButtonClickHandler = (button) => {
+    //get the operator of the button being clicked
+    let buttonOperatorText = button.innerText;
+
+    //check if this is the first operation
+    if (
+      firstNumberInput !== INPUT_EMPTY &&
+      operatorInput === INPUT_EMPTY &&
+      secondNumberInput === INPUT_EMPTY
+    ) {
+      //if first operation
+      //set the operatorInput to the chosen operator
+      operatorInput = buttonOperatorText;
+      //update the display
+      currentOperationPanel[0].innerText = firstNumberInput
+        .concat(" ")
+        .concat(operatorInput)
+        .concat(" ");
+    } else {
+      //if not first operation
+      //
+    }
+  };
+
+  /*
+  function to perform math operation
+  parameters: firstNum, secondNum, operation
+  firstNum-the first operand
+  secondNum-the second operand
+  operation-the operation to be performed
+  */
+  let performOperation = (firstNum, secondNum, operation) => {
+    if (operation === "+") {
+      return firstNum + secondNum;
+    } else if (operation === "-") {
+      return firstNum - secondNum;
+    } else if (operation === "*") {
+      return firstNum * secondNum;
+    } else if (operation === "÷") {
+      return firstNum / secondNum;
+    } else {
+      console.log("Error in performOperation: Unrecognized Operator");
     }
   };
 });
