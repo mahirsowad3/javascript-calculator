@@ -144,7 +144,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
         operatorInput
       );
       //update previous operation panel
-      previousOperationPanel[0].innerText = currentOperationPanel[0].innerText;
+      previousOperationPanel[0].innerText = currentOperationPanel[0].innerText
+        .concat(" ")
+        .concat("=");
       //set the firstNumberInput to the result of current operation
       firstNumberInput = currentResult.toString();
       //set the operatorInput to the new operator
