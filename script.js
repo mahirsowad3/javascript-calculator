@@ -102,11 +102,18 @@ document.addEventListener("DOMContentLoaded", (e) => {
       //update the display
       currentOperationPanel[0].innerText = firstNumberInput
         .concat(" ")
-        .concat(operatorInput)
-        .concat(" ");
-    } else {
-      //if not first operation
-      //
+        .concat(operatorInput);
+    } else if (
+      firstNumberInput !== INPUT_EMPTY &&
+      operatorInput !== INPUT_EMPTY &&
+      secondNumberInput === INPUT_EMPTY
+    ) {
+      //if user presses multiple operations sequentially
+      operatorInput = buttonOperatorText;
+      //update the display
+      currentOperationPanel[0].innerText = firstNumberInput
+        .concat(" ")
+        .concat(operatorInput);
     }
   };
 
