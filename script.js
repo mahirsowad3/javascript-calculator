@@ -172,6 +172,29 @@ document.addEventListener("DOMContentLoaded", (e) => {
         .concat("=");
       //update the current operation panel
       currentOperationPanel[0].innerText = firstNumberInput;
+    } else if (
+      firstNumberInput !== INPUT_EMPTY &&
+      operatorInput !== INPUT_EMPTY &&
+      secondNumberInput !== INPUT_EMPTY
+    ) {
+      //calculate the result of the operation
+      let currentResult = performOperation(
+        Number(firstNumberInput),
+        Number(secondNumberInput),
+        operatorInput
+      );
+      //update the previous operation panel
+      previousOperationPanel[0].innerText = currentOperationPanel[0].innerText
+        .concat(" ")
+        .concat("=");
+      //set the firstNumberInput as the result of the current operation
+      firstNumberInput = currentResult.toString();
+      //reset the operatorInput
+      operatorInput = INPUT_EMPTY;
+      //reset the secondNumberInput
+      secondNumberInput = INPUT_EMPTY;
+      //update the current operation panel
+      currentOperationPanel[0].innerText = currentResult.toString();
     }
   };
 
