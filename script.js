@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     //set up event listener on the all clear button
     for (let i = 0; i < allClearButton.length; i++) {
-      allClearButton[0].addEventListener("click", () => {
+      allClearButton[i].addEventListener("click", () => {
         allClearButtonClickHandler(allClearButton[i]);
       });
     }
