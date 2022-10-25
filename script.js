@@ -259,6 +259,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
         .concat(operatorInput)
         .concat(" ")
         .concat(secondNumberInput);
+    } else if (
+      firstNumberInput !== INPUT_EMPTY &&
+      operatorInput !== INPUT_EMPTY &&
+      secondNumberInput === INPUT_EMPTY
+    ) {
+      //if the secondNumberInput is empty
+      //then delete the operatorInput
+      operatorInput = INPUT_EMPTY;
+      //update the current operation panel
+      currentOperationPanel[0].innerText = firstNumberInput;
     }
   };
 
