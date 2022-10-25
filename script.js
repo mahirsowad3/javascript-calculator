@@ -49,6 +49,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
       equalButtonClickHandler(equalButton[i]);
     });
 
+    //set up event listener on the delete button
+    for (let i = 0; i < deleteButton.length; i++) {
+      deleteButton[i].addEventListener("click", () => {
+        deleteButtonClickHandler(deleteButton[i]);
+      });
+    }
+
     //set up event listener on the all clear button
     for (let i = 0; i < allClearButton.length; i++) {
       allClearButton[i].addEventListener("click", () => {
@@ -226,6 +233,33 @@ document.addEventListener("DOMContentLoaded", (e) => {
     previousOperationPanel[0].innerText = "";
     //reset the current operation panel
     currentOperationPanel[0].innerText = "0";
+  };
+
+  /*
+  function to handle clicks for the delete button
+  parameters: button
+  button-the button being pressed
+  */
+  let deleteButtonClickHandler = (button) => {
+    //find out where to delete from
+    if (
+      firstNumberInput !== INPUT_EMPTY &&
+      operatorInput !== INPUT_EMPTY &&
+      secondNumberInput !== INPUT_EMPTY
+    ) {
+      //if all the inputs are non-empty
+      //delete the last letter from secondNumberInput
+      secondNumberInput = secondNumberInput.substring(
+        0,
+        secondNumberInput.length - 1
+      );
+      //update the current operation panel
+      currentOperationPanel[0].innerText = firstNumberInput
+        .concat(" ")
+        .concat(operatorInput)
+        .concat(" ")
+        .concat(secondNumberInput);
+    }
   };
 
   /*
