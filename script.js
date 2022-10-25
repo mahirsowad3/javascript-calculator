@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       secondNumberInput !== INPUT_EMPTY
     ) {
       //if all the inputs are non-empty
-      //delete the last letter from secondNumberInput
+      //delete the last digit from secondNumberInput
       secondNumberInput = secondNumberInput.substring(
         0,
         secondNumberInput.length - 1
@@ -269,6 +269,29 @@ document.addEventListener("DOMContentLoaded", (e) => {
       operatorInput = INPUT_EMPTY;
       //update the current operation panel
       currentOperationPanel[0].innerText = firstNumberInput;
+    } else if (
+      firstNumberInput !== INPUT_EMPTY &&
+      operatorInput === INPUT_EMPTY &&
+      secondNumberInput === INPUT_EMPTY
+    ) {
+      //if only the first number is non-empty
+      //delete the last digit from the first number
+      firstNumberInput = firstNumberInput.substring(
+        0,
+        firstNumberInput.length - 1
+      );
+      //clear the previous operation panel
+      previousOperationPanel[0].innerText = "";
+      //update the current operation panel
+      if (firstNumberInput === INPUT_EMPTY) {
+        //if firstNumberInput is empty
+        //then set the current operation panel to 0
+        currentOperationPanel[0].innerText = "0";
+      } else {
+        //if firstNumberInput is non-empty
+        //then update the current operation panel normally
+        currentOperationPanel[0].innerText = firstNumberInput;
+      }
     }
   };
 
