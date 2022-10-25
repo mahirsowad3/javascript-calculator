@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   let equalButton = document.getElementsByClassName("equal-btn");
 
   //get the clear button
-  let clearButton = document.getElementsByClassName("clear-btn");
+  let allClearButton = document.getElementsByClassName("clear-btn");
 
   //get the delete button
   let deleteButton = document.getElementsByClassName("del-btn");
@@ -48,6 +48,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
     equalButton[i].addEventListener("click", () => {
       equalButtonClickHandler(equalButton[i]);
     });
+
+    //set up event listener on the all clear button
+    for (let i = 0; i < allClearButton.length; i++) {
+      allClearButton[0].addEventListener("click", () => {
+        allClearButtonClickHandler(allClearButton[i]);
+      });
+    }
   }
 
   /*
@@ -161,6 +168,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
     }
   };
 
+  /*
+  function to handle clicks for the equal button
+  parameters: button
+  button-the button being pressed
+  */
   let equalButtonClickHandler = (button) => {
     //if user has entered no number
     if (firstNumberInput === INPUT_EMPTY && secondNumberInput === INPUT_EMPTY) {
@@ -196,6 +208,24 @@ document.addEventListener("DOMContentLoaded", (e) => {
       //update the current operation panel
       currentOperationPanel[0].innerText = currentResult.toString();
     }
+  };
+
+  /*
+  function to handle clicks for the all clear button
+  parameters: button
+  button-the button being pressed
+  */
+  let allClearButtonClickHandler = (button) => {
+    //reset the firstNumberInput
+    firstNumberInput = INPUT_EMPTY;
+    //reset the operatorInput
+    operatorInput = INPUT_EMPTY;
+    //reset the secondNumberInput
+    secondNumberInput = INPUT_EMPTY;
+    //reset the previous operation panel
+    previousOperationPanel[0].innerText = "";
+    //reset the current operation panel
+    currentOperationPanel[0].innerText = "0";
   };
 
   /*
