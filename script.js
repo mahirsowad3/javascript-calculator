@@ -67,6 +67,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
   }
 
+  //set up event listener on the decimal point button
+  for (let i = 0; i < decimalButton.length; i++) {
+    decimalButton[i].addEventListener("click", (button) => {
+      decimalButtonClickhandler(button);
+    });
+  }
+
   /*
    function to handle clicks for numberButtons
    parameters: button
@@ -294,6 +301,46 @@ document.addEventListener("DOMContentLoaded", (e) => {
         //if firstNumberInput is non-empty
         //then update the current operation panel normally
         currentOperationPanel[0].innerText = firstNumberInput;
+      }
+    }
+  };
+
+  /*
+  function to handle clicks for the decimal point button
+  parameters: button
+  button-the button being pressed
+  */
+  let decimalButtonClickhandler = (button) => {
+    //figure out where to add the decimal point
+    if (operatorInput === INPUT_EMPTY) {
+      //if operatorInput is empty
+      //check if decimal is already present in firstNumberInput
+      if (firstNumberInput.includes(".")) {
+        //if firstNumberInput already has a decimal point
+        //do nothing
+      } else {
+        //if firstNumberInput does not have a decimal point
+        //add it
+        firstNumberInput = firstNumberInput.concat(".");
+        //update current operation panel
+        currentOperationPanel[0].innerText = firstNumberInput;
+      }
+    } else {
+      //if operatorInput is non-empty
+      //check if decimal is already present in secondNumberInput
+      if (secondNumberInput.includes(".")) {
+        //if secondNumberInput already has a decimal point
+        //do nothing
+      } else {
+        //if seocndNumberInput does not have a deicmal point
+        //add it
+        secondNumberInput = secondNumberInput.concat(".");
+        //update current operation panel
+        currentOperationPanel[0].innerText = firstNumberInput
+          .concat(" ")
+          .concat(operatorInput)
+          .concat(" ")
+          .concat(secondNumberInput);
       }
     }
   };
