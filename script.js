@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
   //get the delete button
   let deleteButton = document.getElementsByClassName("del-btn");
 
+  //get the decimal button
+  let decimalButton = document.getElementsByClassName("decimal-point");
+
   //get the results panel displays
   let previousOperationPanel =
     document.getElementsByClassName("previous-operation");
@@ -48,20 +51,20 @@ document.addEventListener("DOMContentLoaded", (e) => {
     equalButton[i].addEventListener("click", () => {
       equalButtonClickHandler(equalButton[i]);
     });
+  }
 
-    //set up event listener on the delete button
-    for (let i = 0; i < deleteButton.length; i++) {
-      deleteButton[i].addEventListener("click", () => {
-        deleteButtonClickHandler(deleteButton[i]);
-      });
-    }
+  //set up event listener on the delete button
+  for (let i = 0; i < deleteButton.length; i++) {
+    deleteButton[i].addEventListener("click", () => {
+      deleteButtonClickHandler(deleteButton[i]);
+    });
+  }
 
-    //set up event listener on the all clear button
-    for (let i = 0; i < allClearButton.length; i++) {
-      allClearButton[i].addEventListener("click", () => {
-        allClearButtonClickHandler(allClearButton[i]);
-      });
-    }
+  //set up event listener on the all clear button
+  for (let i = 0; i < allClearButton.length; i++) {
+    allClearButton[i].addEventListener("click", () => {
+      allClearButtonClickHandler(allClearButton[i]);
+    });
   }
 
   /*
