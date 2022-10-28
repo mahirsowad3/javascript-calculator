@@ -95,13 +95,39 @@ document.addEventListener("DOMContentLoaded", (e) => {
       if (operatorInput === INPUT_EMPTY) {
         //if operatorInput is empty
         //then append number to the end of firstNumberInput
-        firstNumberInput = firstNumberInput.concat(buttonNumberText);
+
+        //checking to prevent one or multiple leading 0s
+        if (firstNumberInput === "0" && buttonNumberText === "0") {
+          //if firstNumberInput is already 0 and user trying to more 0s
+          //do nothing
+        } else if (firstNumberInput === "0" && buttonNumberText !== "0") {
+          //if user trying to enter non-zero digit after pressing zero
+          //then remove the zero leading digit
+          firstNumberInput = buttonNumberText;
+        } else {
+          //if firstNumberInput does not have leading 0s
+          firstNumberInput = firstNumberInput.concat(buttonNumberText);
+        }
+
         //update current operation panel
         currentOperationPanel[0].innerText = firstNumberInput;
       } else {
         //if operator has already been choosen
-        //then append to second number
-        secondNumberInput = secondNumberInput.concat(buttonNumberText);
+        //then append digit to second number
+
+        //checking to prevent one or multiple leading 0s
+        if (secondNumberInput === "0" && buttonNumberText === "0") {
+          //if firstNumberInput is already 0 and user trying to more 0s
+          //do nothing
+        } else if (secondNumberInput === "0" && buttonNumberText !== "0") {
+          //if user trying to enter non-zero digit after pressing zero
+          //then remove the zero leading digit
+          secondNumberInput = buttonNumberText;
+        } else {
+          //if firstNumberInput does not have leading 0s
+          secondNumberInput = secondNumberInput.concat(buttonNumberText);
+        }
+
         //update current operation panel
         currentOperationPanel[0].innerText = firstNumberInput
           .concat(" ")
